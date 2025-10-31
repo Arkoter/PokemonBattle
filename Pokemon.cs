@@ -1,14 +1,20 @@
 ﻿public class Pokemon
 {
+
     public string Name { get; }
-    public string Type { get; }
+    public PokemonType Type { get; }
     public int LifePoints { get; private set; }
     
-    public Pokemon(string name, string type, int lifePoints)
+    public Pokemon(string name, PokemonType type, int lifePoints)
     {
         Name = name;
         Type = type;
         LifePoints = lifePoints;
+    }
+    
+    public void Entry()
+    {
+        Console.WriteLine($"{Name} type {Type} enter the combat!");
     }
     
     public void Attack(Pokemon target, int Damage)
@@ -27,7 +33,7 @@
         }
         else
         {
-            Console.WriteLine($"{Name} is alive!");
+            Console.WriteLine($"{Name} is alive! \n");
         }
     }
 }

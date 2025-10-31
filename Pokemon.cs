@@ -21,5 +21,13 @@
     {
         LifePoints = Math.Max(0, LifePoints - Damage);
         Console.WriteLine($"{Name} has {LifePoints} HP left!");
+        if (LifePoints == 0)
+        {
+            Console.WriteLine($"{Name} is KO!");
+        }
+        else
+        {
+            Console.WriteLine($"{Name} is alive!");
+        }
     }
 }

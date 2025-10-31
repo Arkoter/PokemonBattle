@@ -5,6 +5,6 @@
         var pikachu = new Pokemon("Pikachu", "Electric", 100);
         var dracaufeu = new Pokemon("Dracaufeu", "Fire", 100);
         
-        pikachu.Attack(dracaufeu, 30);
+        pikachu.Attack(dracaufeu, 100);
     }
 }

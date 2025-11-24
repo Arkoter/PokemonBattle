@@ -1,4 +1,6 @@
-﻿public enum PokemonType
+﻿namespace PokemonBattle;
+
+public enum PokemonType
 {
     Fire,
     Water,

@@ -1,4 +1,6 @@
-﻿public class Pokemon
+﻿namespace PokemonBattle;
+
+public class Pokemon
 {
 
     public string Name { get; }
@@ -19,22 +21,11 @@
         Console.WriteLine($"{Name} type {Type} enter the arena! \n");
     }
     
-    public void Attack(Pokemon target, double Damage)
-    {
-		Damage = Damage * Coef.GetTypeEffectiveness(AttackType, target.Type);
-		if (Coef.GetTypeEffectiveness(AttackType, target.Type) == 2.0)
-			Console.WriteLine("It's super effective!");
-		else if (Coef.GetTypeEffectiveness(AttackType, target.Type) == 0.5)
-            Console.WriteLine("It's not very effective...");
-        Console.WriteLine($"{Name} attacks {target.Name} and deals {Damage} damage!");
-        target.ReceiveDamage(Damage);
-    }
-
     public void ReceiveDamage(double Damage)
     {
         LifePoints = Math.Max(0, LifePoints - Damage);
         Console.WriteLine($"{Name} has {LifePoints} HP left!");
-        if (LifePoints == 0)
+        if (IsFainted())
         {
             Console.WriteLine($"{Name} is KO! \n");
         }
@@ -43,4 +34,14 @@
             Console.WriteLine($"{Name} is alive! \n");
         }
     }
+
+	public void ReceiveHeal(double Heal)
+	{
+		LifePoints = Math.Max(100, LifePoints + Heal);
+	}
+
+	public  bool IsFainted()
+	{
+		return LifePoints <= 0;
+	}
 }

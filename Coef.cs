@@ -1,4 +1,6 @@
-﻿public class Coef
+﻿namespace PokemonBattle;
+
+public class Coef
 {
     public static double GetTypeEffectiveness(PokemonType attackType, PokemonType defenderType)
     {

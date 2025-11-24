@@ -1,9 +1,14 @@
-﻿public class Program
+﻿namespace PokemonBattle;
+
+public class Program
 {
     public static void Main()
     {
-        var pikachu = new Pokemon("Pikachu", PokemonType.Water, PokemonType.Electric, 100);
-        var dracaufeu = new Pokemon("Dracaufeu", PokemonType.Grass, PokemonType.Grass, 100);
+        var pikachu = new Pokemon("Pikachu", PokemonType.Electric, PokemonType.Electric, 100);
+        var dracaufeu = new Pokemon("Dracaufeu", PokemonType.Fire, PokemonType.Grass, 100);
+		Attack thunderShock = new DamageAttack("Dégat", 30, PokemonType.Electric);
+		Attack healPulse = new HealingAttack("Soin", 10, PokemonType.Normal);
+		Attack drainLife = new VampireAttack("Vampirisme", 20, 0.5, PokemonType.Grass);
 		Console.ForegroundColor = ConsoleColor.Blue;
 		pikachu.Entry();
         dracaufeu.Entry();
@@ -12,12 +17,13 @@
             if (pikachu.LifePoints != 0)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
-                pikachu.Attack(dracaufeu, 40);
+				healPulse.Use(pikachu, dracaufeu);
+                thunderShock.Use(pikachu, dracaufeu);
             }
             if (dracaufeu.LifePoints != 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                dracaufeu.Attack(pikachu, 30);
+                thunderShock.Use(dracaufeu, pikachu);
             }
         }
 

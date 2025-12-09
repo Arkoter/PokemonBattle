@@ -20,8 +20,23 @@ public class DamageAttack : Attack
         
         Console.WriteLine($"{user.Name} use {Name}!");
         var effectiveness = TypeHelper.GetEffectiveness(Type, target.Type);
+        switch (effectiveness)
+        {
+            case 0.5:
+                Console.WriteLine("Ce n'est pas très efficace");
+                break;
+            case 1:
+                Console.WriteLine("");
+                break;
+            case 2:
+                Console.WriteLine("C'est super efficace !");
+                break;
+            default:
+                //noop
+                break;
+        }
         var totalDamage = (int)(Damage * effectiveness);
-        target.ReceiveDamage(Damage);
+        target.ReceiveDamage(totalDamage);
     }
 
     public override void GetDescription()

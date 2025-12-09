@@ -5,14 +5,12 @@ public class Pokemon
 
     public string Name { get; }
     public PokemonType Type { get; }
-	public PokemonType AttackType { get; }
     public double LifePoints { get; private set; }
     
-    public Pokemon(string name, PokemonType type, PokemonType attacktype, double lifePoints)
+    public Pokemon(string name, PokemonType type, double lifePoints)
     {
         Name = name;
         Type = type;
-		AttackType = attacktype;
         LifePoints = lifePoints;
     }
     
@@ -44,4 +42,9 @@ public class Pokemon
 	{
 		return LifePoints <= 0;
 	}
+    public void Catch()
+    {
+        LifePoints = 0;
+        Console.WriteLine($"{Name} has been caught!");
+    }
 }

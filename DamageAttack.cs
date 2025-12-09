@@ -12,6 +12,12 @@ public class DamageAttack : Attack
 
     public override void Use(Pokemon user, Pokemon target)
     {
+        if (user.IsFainted())
+        {
+            Console.WriteLine($"{user.Name} has fainted and cannot use {Name}.");
+            return;
+        }
+        
         Console.WriteLine($"{user.Name} use {Name}!");
         var effectiveness = TypeHelper.GetEffectiveness(Type, target.Type);
         var totalDamage = (int)(Damage * effectiveness);

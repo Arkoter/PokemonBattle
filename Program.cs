@@ -111,6 +111,9 @@ public class Program
         {
             Console.WriteLine("Pikachu wins the battle!");
         }
+
+        Console.WriteLine("Pressé entrer pour quitter.");
+        Console.ReadLine();
         Console.ForegroundColor = ConsoleColor.White;
     }
 }

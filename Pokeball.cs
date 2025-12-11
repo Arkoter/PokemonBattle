@@ -4,6 +4,7 @@ public class Pokeball : IItem
 {
     public string Name { get; }
     public int Cost { get; }
+    private Random rnd = new Random();
 
     public Pokeball(string name = "Pokeball", int cost = 200)
     {
@@ -13,6 +14,14 @@ public class Pokeball : IItem
 
     public void Use(Pokemon target)
     {
-        target.Catch();
+        int number = rnd.Next(1, 3);
+        if (number == 1)
+        {
+            target.Catch();
+        }
+        else
+        {
+            Console.WriteLine("Vous avez raté!");
+        }
     }
 }

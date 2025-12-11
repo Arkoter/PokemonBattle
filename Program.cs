@@ -12,6 +12,7 @@ public class Program
 		Attack thunderShock = new DamageAttack("ThunderShock", 30, PokemonType.Fire);
 		Attack healPulse = new HealingAttack("HealPulse", 10, PokemonType.Grass);
 		Attack drainLife = new VampireAttack("DrainLife", 20, 0.5, PokemonType.Grass);
+        int money = 600;
         Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("Voulez vous entrez dans l'arène?");
         var input = Console.ReadLine();
@@ -33,13 +34,33 @@ public class Program
                     input = Console.ReadLine();
                     if ("Potion".Equals(input, StringComparison.OrdinalIgnoreCase))
                     {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        potionSoins.Use(pikachu);
+                        if (money - potionSoins.Cost >= 0)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            potionSoins.Use(pikachu);
+                            money -= 200;
+                            Console.WriteLine($"Il vous reste {money}$");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Vous n'avez pas assez d'argent.");
+                            continue;
+                        }
                     }
                     else if ("Pokeball".Equals(input, StringComparison.OrdinalIgnoreCase))
                     {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        pokeball.Use(dracaufeu);
+                        if (money - pokeball.Cost >= 0)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            pokeball.Use(dracaufeu);
+                            money -= 500;
+                            Console.WriteLine($"Il vous reste {money}$");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Vous n'avez pas assez d'argent.");
+                            continue;
+                        }
                     }
                 }
                 else if ("Attaquer".Equals(input, StringComparison.OrdinalIgnoreCase))

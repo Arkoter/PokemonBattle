@@ -4,14 +4,14 @@ public class Program
 {
     public static void Main()
     {
-        var pikachu = new Pokemon("Pikachu", PokemonType.Fire, 100);
-        var dracaufeu = new Pokemon("Dracaufeu", PokemonType.Grass, 100);
+        var pikachu = new Pokemon("Pikachu", PokemonType.Electric, 100);
+        var dracaufeu = new Pokemon("Dracaufeu", PokemonType.Fire, 100);
         var potionSoins = new Potion();
         var pokeball = new Pokeball();
         Random rnd = new Random();
-		Attack thunderShock = new DamageAttack("ThunderShock", 30, PokemonType.Fire);
-		Attack healPulse = new HealingAttack("HealPulse", 10, PokemonType.Grass);
-		Attack drainLife = new VampireAttack("DrainLife", 20, 0.5, PokemonType.Grass);
+		Attack thunderShock = new DamageAttack("ThunderShock", 30, PokemonType.Electric);
+		Attack healPulse = new HealingAttack("HealPulse", 10, PokemonType.Normal);
+		Attack drainLife = new VampireAttack("DrainLife", 20, 0.5, PokemonType.Dark);
         int money = 600;
         Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("Voulez vous entrez dans l'arène?");

@@ -9,9 +9,9 @@ public class Program
         var potionSoins = new Potion();
         var pokeball = new Pokeball();
         Random rnd = new Random();
-		Attack thunderShock = new DamageAttack("Dégat", 30, PokemonType.Fire);
-		Attack healPulse = new HealingAttack("Soin", 10, PokemonType.Grass);
-		Attack drainLife = new VampireAttack("Vampirisme", 20, 0.5, PokemonType.Grass);
+		Attack thunderShock = new DamageAttack("ThunderShock", 30, PokemonType.Fire);
+		Attack healPulse = new HealingAttack("HealPulse", 10, PokemonType.Grass);
+		Attack drainLife = new VampireAttack("DrainLife", 20, 0.5, PokemonType.Grass);
         Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("Voulez vous entrez dans l'arène?");
         var input = Console.ReadLine();

@@ -6,12 +6,14 @@ public class Pokemon
     public string Name { get; }
     public PokemonType Type { get; }
     public double LifePoints { get; private set; }
+    public double MaxLifePoints { get; }
     
     public Pokemon(string name, PokemonType type, double lifePoints)
     {
         Name = name;
         Type = type;
         LifePoints = lifePoints;
+        MaxLifePoints = lifePoints;
     }
     
     public void Entry()
@@ -19,9 +21,9 @@ public class Pokemon
         Console.WriteLine($"{Name} type {Type} enter the arena! \n");
     }
     
-    public void ReceiveDamage(double Damage)
+    public void ReceiveDamage(double damage)
     {
-        LifePoints = Math.Max(0, LifePoints - Damage);
+        LifePoints = Math.Max(0, LifePoints - damage);
         Console.WriteLine($"{Name} has {LifePoints} HP left!");
         if (IsFainted())
         {
@@ -33,9 +35,9 @@ public class Pokemon
         }
     }
 
-	public void ReceiveHeal(double Heal)
+	public void ReceiveHeal(double heal)
 	{
-		LifePoints = Math.Max(100, LifePoints + Heal);
+		LifePoints = Math.Min(MaxLifePoints, LifePoints + heal);
 	}
 
 	public  bool IsFainted()

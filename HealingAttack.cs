@@ -19,7 +19,7 @@ public class HealingAttack : Attack
         }
 
         user.ReceiveHeal(HealingAmount);
-        Console.WriteLine($"{user.Name} used {Name} and healed for {HealingAmount} HP!");
+        Console.WriteLine($"{user.Name} used {Name} and healed for {HealingAmount} HP! \n");
     }
 
     public override void GetDescription()

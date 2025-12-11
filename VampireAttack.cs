@@ -23,9 +23,9 @@ public class VampireAttack : DamageAttack
         // target.TakeDamage(Name, totalDamage, effectiveness);
         // Duplicata du parent, peut être remplacé par base.Use()
         base.Use(user, target);
-        int Heal = (int)(totalDamage * VampireCoefficient);
-        user.ReceiveHeal(Heal);
-        Console.WriteLine($"{user.Name} healed for {Heal} HP due to vampire effect!");
+        int heal = (int)(totalDamage * VampireCoefficient);
+        user.ReceiveHeal(heal);
+        Console.WriteLine($"{user.Name} healed for {heal} HP due to vampire effect! \n");
     }
 
     public override void GetDescription()

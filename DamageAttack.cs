@@ -23,13 +23,13 @@ public class DamageAttack : Attack
         switch (effectiveness)
         {
             case 0.5:
-                Console.WriteLine("Ce n'est pas très efficace");
+                Console.WriteLine("Ce n'est pas très efficace \n");
                 break;
             case 1:
                 Console.WriteLine("");
                 break;
             case 2:
-                Console.WriteLine("C'est super efficace !");
+                Console.WriteLine("C'est super efficace ! \n");
                 break;
             default:
                 //noop

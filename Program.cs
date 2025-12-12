@@ -13,6 +13,7 @@ public class Program
 		Attack healPulse = new HealingAttack("HealPulse", 10, PokemonType.Normal);
 		Attack drainLife = new VampireAttack("DrainLife", 20, 0.5, PokemonType.Dark);
         int money = 600;
+        Console.Clear();
         Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("Voulez vous entrez dans l'arène?");
         var input = Console.ReadLine();
@@ -60,6 +61,13 @@ public class Program
                         drainLife.Use(pikachu, dracaufeu);
                         Console.ReadLine();
                     }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Choix invalide");
+                        Thread.Sleep(1500);
+                        continue;
+                    }
                 }
                 else if ("2".Equals(input, StringComparison.OrdinalIgnoreCase))
                 {
@@ -84,7 +92,7 @@ public class Program
                         {
                             Console.Clear();
                             Console.WriteLine("Vous n'avez pas assez d'argent.");
-                            Console.ReadLine();
+                            Thread.Sleep(1500);
                             continue;
                         }
                     }
@@ -103,10 +111,24 @@ public class Program
                         {
                             Console.Clear();
                             Console.WriteLine("Vous n'avez pas assez d'argent.");
-                            Console.ReadLine();
+                            Thread.Sleep(1500);
                             continue;
                         }
                     }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Choix invalide");
+                        Thread.Sleep(1500);
+                        continue;
+                    }
+                }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("Choix invalide");
+                    Thread.Sleep(1500);
+                    continue;
                 }
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 int enemyrandom = rnd.Next(1, 4);

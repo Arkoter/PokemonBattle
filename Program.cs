@@ -8,6 +8,8 @@ public class Program
         var dracaufeu = new Pokemon("Dracaufeu", PokemonType.Fire, 100, 100);
         var potionSoins = new Potion();
         var pokeball = new Pokeball();
+        var superPotionSoins = new Potion("Super Potion", 300, 40);
+        var superball = new Pokeball("Superball", 600, 3);
         Random rnd = new Random();
 		Attack thunderShock = new DamageAttack("ThunderShock", 30, PokemonType.Electric);
 		Attack healPulse = new HealingAttack("HealPulse", 10, PokemonType.Normal);
@@ -76,6 +78,8 @@ public class Program
                     Console.WriteLine("Quelle objet voulez vous utilisez?");
                     Console.WriteLine("1:Potion");
                     Console.WriteLine("2:Pokeball");
+                    Console.WriteLine("3:Super Potion");
+                    Console.WriteLine("4:Superball");
                     input = Console.ReadLine();
                     if ("1".Equals(input, StringComparison.OrdinalIgnoreCase))
                     {
@@ -84,7 +88,7 @@ public class Program
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.Clear();
                             potionSoins.Use(pikachu);
-                            money -= 200;
+                            money -= potionSoins.Cost;
                             Console.WriteLine($"Il vous reste {money}$");
                             Console.ReadLine();
                         }
@@ -103,7 +107,45 @@ public class Program
                             Console.ForegroundColor = ConsoleColor.Yellow;
                             Console.Clear();
                             pokeball.Use(dracaufeu);
-                            money -= 500;
+                            money -= pokeball.Cost;
+                            Console.WriteLine($"Il vous reste {money}$");
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Vous n'avez pas assez d'argent.");
+                            Thread.Sleep(1500);
+                            continue;
+                        }
+                    }
+                    else if ("3".Equals(input, StringComparison.OrdinalIgnoreCase))
+                    {
+                        if (money - superPotionSoins.Cost >= 0)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.Clear();
+                            superPotionSoins.Use(pikachu);
+                            money -= superPotionSoins.Cost;
+                            Console.WriteLine($"Il vous reste {money}$");
+                            Console.ReadLine();
+                        }
+                        else
+                        {
+                            Console.Clear();
+                            Console.WriteLine("Vous n'avez pas assez d'argent.");
+                            Thread.Sleep(1500);
+                            continue;
+                        }
+                    }
+                    else if ("4".Equals(input, StringComparison.OrdinalIgnoreCase))
+                    {
+                        if (money - superball.Cost >= 0)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.Clear(); 
+                            superball.Use(dracaufeu);
+                            money -= superball.Cost;
                             Console.WriteLine($"Il vous reste {money}$");
                             Console.ReadLine();
                         }

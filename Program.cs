@@ -4,8 +4,8 @@ public class Program
 {
     public static void Main()
     {
-        var pikachu = new Pokemon("Pikachu", PokemonType.Electric, 100);
-        var dracaufeu = new Pokemon("Dracaufeu", PokemonType.Fire, 100);
+        var pikachu = new Pokemon("Pikachu", PokemonType.Electric, 100, 100);
+        var dracaufeu = new Pokemon("Dracaufeu", PokemonType.Fire, 100, 100);
         var potionSoins = new Potion();
         var pokeball = new Pokeball();
         Random rnd = new Random();
@@ -16,104 +16,137 @@ public class Program
         Console.ForegroundColor = ConsoleColor.White;
         Console.WriteLine("Voulez vous entrez dans l'arène?");
         var input = Console.ReadLine();
-        if ("yes".Equals(input, StringComparison.OrdinalIgnoreCase))
+        if ("Oui".Equals(input, StringComparison.OrdinalIgnoreCase))
         {
             Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Clear();
             pikachu.Entry();
             dracaufeu.Entry();
             while (dracaufeu.LifePoints != 0 & pikachu.LifePoints != 0)
             {
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Voulez vous attaquer ou utiliser un objet?");
+                Console.Clear();
+                Console.WriteLine("Qu'est-ce que vous voulez faire ?");
+                Console.WriteLine("1:Attaquer");
+                Console.WriteLine("2:Objets");
                 input = Console.ReadLine();
-                if ("Objet".Equals(input, StringComparison.OrdinalIgnoreCase))
+                if ("1".Equals(input, StringComparison.OrdinalIgnoreCase))
                 {
                     Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("Vous avez choisi l’action Objet.");
-                    Console.WriteLine("Voulez vous utilisé une pokeball ou une potion?");
+                    Console.Clear();
+                    Console.WriteLine("Quelles attaques voulez vous utilisé ?");
+                    Console.WriteLine("1:ThunderShock");
+                    Console.WriteLine("2:HealPulse");
+                    Console.WriteLine("3:DrainLife");
                     input = Console.ReadLine();
-                    if ("Potion".Equals(input, StringComparison.OrdinalIgnoreCase))
+                    if ("1".Equals(input, StringComparison.OrdinalIgnoreCase))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Clear();
+                        thunderShock.Use(pikachu, dracaufeu);
+                        Console.ReadLine();
+                    }
+                    else if ("2".Equals(input, StringComparison.OrdinalIgnoreCase))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Clear();
+                        healPulse.Use(pikachu, pikachu);
+                        Console.ReadLine();
+                    }
+                    else if ("3".Equals(input, StringComparison.OrdinalIgnoreCase))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Clear();
+                        drainLife.Use(pikachu, dracaufeu);
+                        Console.ReadLine();
+                    }
+                }
+                else if ("2".Equals(input, StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.Clear();
+                    Console.WriteLine("Quelle objet voulez vous utilisez?");
+                    Console.WriteLine("1:Potion");
+                    Console.WriteLine("2:Pokeball");
+                    input = Console.ReadLine();
+                    if ("1".Equals(input, StringComparison.OrdinalIgnoreCase))
                     {
                         if (money - potionSoins.Cost >= 0)
                         {
                             Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.Clear();
                             potionSoins.Use(pikachu);
                             money -= 200;
                             Console.WriteLine($"Il vous reste {money}$");
+                            Console.ReadLine();
                         }
                         else
                         {
+                            Console.Clear();
                             Console.WriteLine("Vous n'avez pas assez d'argent.");
+                            Console.ReadLine();
                             continue;
                         }
                     }
-                    else if ("Pokeball".Equals(input, StringComparison.OrdinalIgnoreCase))
+                    else if ("2".Equals(input, StringComparison.OrdinalIgnoreCase))
                     {
                         if (money - pokeball.Cost >= 0)
                         {
                             Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.Clear();
                             pokeball.Use(dracaufeu);
                             money -= 500;
                             Console.WriteLine($"Il vous reste {money}$");
+                            Console.ReadLine();
                         }
                         else
                         {
+                            Console.Clear();
                             Console.WriteLine("Vous n'avez pas assez d'argent.");
+                            Console.ReadLine();
                             continue;
                         }
-                    }
-                }
-                else if ("Attaquer".Equals(input, StringComparison.OrdinalIgnoreCase))
-                {
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("Vous avez choisi l'action Attack.");
-                    Console.WriteLine("Quelles attaques voulez vous utilisé ? (thunderShock, healPulse, drainLife)");
-                    input = Console.ReadLine();
-                    if ("thunderShock".Equals(input, StringComparison.OrdinalIgnoreCase))
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        thunderShock.Use(pikachu, dracaufeu);
-                    }
-                    else if ("healPulse".Equals(input, StringComparison.OrdinalIgnoreCase))
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        healPulse.Use(pikachu, pikachu);
-                    }
-                    else if ("drainLife".Equals(input, StringComparison.OrdinalIgnoreCase))
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        drainLife.Use(pikachu, dracaufeu);
                     }
                 }
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 int enemyrandom = rnd.Next(1, 4);
                 if (enemyrandom == 1)
                 {
+                    Console.Clear();
                     thunderShock.Use(dracaufeu, pikachu);
+                    Console.ReadLine();
                 }
                 else if (enemyrandom == 2)
                 {
+                    Console.Clear();
                     healPulse.Use(dracaufeu, pikachu);
+                    Console.ReadLine();
                 }
                 else if (enemyrandom == 3)
                 {
+                    Console.Clear();
                     drainLife.Use(dracaufeu, pikachu);
+                    Console.ReadLine();
                 }
             }
-        }
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Clear();
+            if (pikachu.LifePoints == 0)
+            {
+                Console.WriteLine("Dracaufeu wins the battle!");
+            }
+            else
+            {
+                Console.WriteLine("Pikachu wins the battle!");
+            }
 
-        Console.ForegroundColor = ConsoleColor.Green;
-        if (pikachu.LifePoints == 0)
-        {
-            Console.WriteLine("Dracaufeu wins the battle!");
+            Console.WriteLine("Presser entrer pour quitter.");
+            Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
         }
         else
         {
-            Console.WriteLine("Pikachu wins the battle!");
+            Console.WriteLine("Vous avez abandonné le combat!");
         }
-
-        Console.WriteLine("Pressé entrer pour quitter.");
-        Console.ReadLine();
-        Console.ForegroundColor = ConsoleColor.White;
     }
 }

@@ -8,7 +8,7 @@ public class Pokemon
     public double LifePoints { get; private set; }
     public double MaxLifePoints { get; }
     
-    public Pokemon(string name, PokemonType type, double lifePoints)
+    public Pokemon(string name, PokemonType type, double lifePoints,  double maxLifePoints)
     {
         Name = name;
         Type = type;

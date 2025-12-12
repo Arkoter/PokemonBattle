@@ -16,11 +16,6 @@ public class Potion : IItem
 
     public void Use(Pokemon target)
     {
-        if (target == null)
-        {
-            return;
-        }
-
         if (target.IsFainted())
         {
             Console.WriteLine($"{target.Name} est K.O., la {Name} n\'a aucun effet.");
